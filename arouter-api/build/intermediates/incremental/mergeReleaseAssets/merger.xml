@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="E:\bookcode\fanlei\ArouterAnalyse\arouter-api\src\main\assets"/><source path="E:\bookcode\fanlei\ArouterAnalyse\arouter-api\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="E:\bookcode\fanlei\ArouterAnalyse\arouter-api\src\release\assets"/></dataSet></merger>
