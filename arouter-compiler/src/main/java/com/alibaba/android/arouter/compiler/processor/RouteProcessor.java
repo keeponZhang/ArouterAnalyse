@@ -149,8 +149,9 @@ public class RouteProcessor extends AbstractProcessor {
     /**
      * {@inheritDoc}
      *
-     * @param annotations
-     * @param roundEnv
+     * @param annotations 使用了支持处理注解的集合
+     * @param roundEnv 表示当前或者之前的运行环境，可以通过对象查找到的注解
+     * @return true 表示后续处理器不会再处理
      */
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {

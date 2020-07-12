@@ -16,19 +16,19 @@ import org.simple.eventbus.EventBus;
 @Route(path = RouterMap.EVENT_BUS_ACTIVITY)
 public class EventBusActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_bus);
-        final int revValue = getIntent().getIntExtra(ConstantMap.EVENT_BUS_DATA, 0);
-        Button button = (Button) findViewById(R.id.bt_event_bus);
-        button.setOnClickListener(new View.OnClickListener() {
+	@Override
+	protected void onCreate(@Nullable Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_event_bus);
+		final int revValue = getIntent().getIntExtra(ConstantMap.EVENT_BUS_DATA, 0);
+		Button button = (Button) findViewById(R.id.bt_event_bus);
+		button.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                EventBus.getDefault().post("通过 EventBus 返回数据=" + revValue, ConstantMap.EVENT_BUS_KEY);
-                finish();
-            }
-        });
-    }
+			@Override
+			public void onClick(View v) {
+				EventBus.getDefault().post("通过 EventBus 返回数据=" + revValue, ConstantMap.EVENT_BUS_KEY);
+				finish();
+			}
+		});
+	}
 }
