@@ -291,6 +291,7 @@ public class AutowiredProcessor extends AbstractProcessor {
                             + element.getSimpleName() + "] in class [" + enclosingElement.getQualifiedName() + "]");
                 }
 
+                //一个类可能注入几个
                 if (parentAndChild.containsKey(enclosingElement)) { // Has categries
                     parentAndChild.get(enclosingElement).add(element);
                 } else {
