@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.demo.lizejun.module.home.R;
 import com.lizejun.demo.lib.base.util.FragmentUtils;
 
+@Route(path="/home/home")
 public class HomeActivity extends AppCompatActivity {
     private static Activity activity;
     public static Activity getThis() {

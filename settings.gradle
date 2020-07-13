@@ -1,4 +1,6 @@
 include ':arouter-compiler'
 include ':arouter-annotation'
 include ':arouter-api'
-include ':app', ':lib-base', ':module-home', ':module-other', ':module-store'
+include ':app', ':lib-base', ':module-home'
+//include        ':module-other',
+//include        ':module-store'

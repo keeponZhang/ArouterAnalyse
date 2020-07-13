@@ -20,7 +20,7 @@ import com.lizejun.demo.module.home.HomeActivity;
  * @version 1.0
  * @since 2017/1/3 11:20
  */
-@Interceptor(priority = 7)
+// @Interceptor(priority = 7)
 public class Test1Interceptor implements IInterceptor {
     Context mContext;
 
