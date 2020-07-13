@@ -75,7 +75,8 @@ import static javax.lang.model.element.Modifier.PUBLIC;
 @SupportedAnnotationTypes({ANNOTATION_TYPE_ROUTE, ANNOTATION_TYPE_AUTOWIRED})
 public class RouteProcessor extends AbstractProcessor {
     /**
-     * 以组为 key，value 对应于该组下解析出的所有注解信息，Set 的实现为 TreeSet，会根据 path 来进行排序。
+     * 以组为 key，value 对应于该组下解析出的所有注解信息，Set 的实现为 TreeSet，会根据 path
+     * 来进行排序。groupMap的key一般是开头那个/home/home，例如这个就是home
      */
     private Map<String, Set<RouteMeta>> groupMap = new HashMap<>(); // ModuleName and routeMeta.
     /**
@@ -253,6 +254,7 @@ public class RouteProcessor extends AbstractProcessor {
                     logger.info(">>> Found activity route: " + tm.toString() + " <<<");
 
                     // Get all fields annotation by @Autowired
+                    //key是字段名
                     Map<String, Integer> paramsType = new HashMap<>();
                     //获得其所有被 @Autowired 注解的成员变量。
                     for (Element field : element.getEnclosedElements()) {
@@ -261,7 +263,11 @@ public class RouteProcessor extends AbstractProcessor {
                             // It must be field, then it has annotation, but it not be provider.
                             Autowired paramConfig = field.getAnnotation(Autowired.class);
                             //将所有被 @Autowired 注解的相关信息放到 map 当中。
-                            paramsType.put(StringUtils.isEmpty(paramConfig.name()) ? field.getSimpleName().toString() : paramConfig.name(), typeUtils.typeExchange(field));
+                            String key = StringUtils.isEmpty(paramConfig.name()) ?
+                                    field.getSimpleName().toString() : paramConfig.name();
+                            int value = typeUtils.typeExchange(field);
+                            logger.info(">>>paramsType put key: " + key + "  value="+value);
+                            paramsType.put(key, value);
                         }
                     }
                     routeMete = new RouteMeta(route, element, RouteType.ACTIVITY, paramsType);
@@ -361,7 +367,7 @@ public class RouteProcessor extends AbstractProcessor {
                             routeMeta.getGroup().toLowerCase());
                 }
 
-                // Generate groups
+                // Generate groups 这里拼接类名
                 String groupFileName = NAME_OF_GROUP + groupName;
                 //关键点1：每一个 group 创建一个 Java 文件，其类名为 Arouter$$Group$$组名，函数名为 public void loadInto(Map<String, RouteMeta> atlas)
                 JavaFile.builder(PACKAGE_OF_GENERATE_FILE,
@@ -392,6 +398,7 @@ public class RouteProcessor extends AbstractProcessor {
                             .addJavadoc(WARNING_TIPS)
                             .addSuperinterface(ClassName.get(type_IProviderGroup))
                             .addModifiers(PUBLIC)
+                            //前面会调用loadIntoMethodOfProviderBuilder.addStatement增加语句体
                             .addMethod(loadIntoMethodOfProviderBuilder.build())
                             .build()
             ).build().writeTo(mFiler);
