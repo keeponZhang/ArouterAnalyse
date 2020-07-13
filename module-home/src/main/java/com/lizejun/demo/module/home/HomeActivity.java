@@ -19,6 +19,8 @@ public class HomeActivity extends AppCompatActivity {
     }
     @Autowired(name = "keepon" )
     String       keepon;
+    @Autowired(name = "keeponService" )
+    IKeeponService mIKeeponService;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

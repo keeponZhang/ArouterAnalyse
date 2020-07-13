@@ -16,5 +16,6 @@ public class HomeActivity$$ARouter$$Autowired implements ISyringe {
     serializationService = ARouter.getInstance().navigation(SerializationService.class);
     HomeActivity substitute = (HomeActivity)target;
     substitute.keepon = substitute.getIntent().getStringExtra("keepon");
+    substitute.mIKeeponService = (IKeeponService)ARouter.getInstance().build("keeponService").navigation();;
   }
 }
