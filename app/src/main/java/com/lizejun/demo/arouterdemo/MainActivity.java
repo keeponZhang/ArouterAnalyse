@@ -30,4 +30,8 @@ public class MainActivity extends AppCompatActivity {
     public void initArouter(View view) {
         ARouter.init(getApplication());
     }
+
+    public void jumpOtherActivity(View view) {
+        ARouter.getInstance().build(RouterMap.NO_RESULT_ACTIVITY,"keepon2").navigation();
+    }
 }

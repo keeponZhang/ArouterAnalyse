@@ -49,9 +49,9 @@ public class InterceptorServiceImpl implements InterceptorService {
                         //递归调用的过程。
                         _excute(0, interceptorCounter, postcard);
                         //阻塞等待超时时间。
-                        Log.e("TAG", " interceptorCounter.await before ");
+                        Log.w("TAG", " interceptorCounter.await before ");
                         interceptorCounter.await(postcard.getTimeout(), TimeUnit.SECONDS);
-                        Log.e("TAG", " interceptorCounter.await after ");
+                        Log.w("TAG", " interceptorCounter.await after ");
                         //如果 count 大于 0，说明没有执行完所有的流程。
                         boolean b = interceptorCounter.getCount() > 0;
                         Log.e("TAG", "run interceptorCounter.getCount():"+b);

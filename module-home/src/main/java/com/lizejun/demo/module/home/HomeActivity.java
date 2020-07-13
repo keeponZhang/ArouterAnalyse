@@ -11,7 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.demo.lizejun.module.home.R;
 import com.lizejun.demo.lib.base.util.FragmentUtils;
 
-@Route(path="/home/home")
+@Route(path="/home/home",group = "keepon")
 public class HomeActivity extends AppCompatActivity {
     private static Activity activity;
     public static Activity getThis() {

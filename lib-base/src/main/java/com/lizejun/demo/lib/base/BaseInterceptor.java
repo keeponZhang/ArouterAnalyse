@@ -1,6 +1,7 @@
 package com.lizejun.demo.lib.base;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Interceptor;
@@ -8,11 +9,13 @@ import com.alibaba.android.arouter.facade.callback.InterceptorCallback;
 import com.alibaba.android.arouter.facade.template.IInterceptor;
 import com.alibaba.android.arouter.launcher.ARouter;
 
+//会放在treemap中，priority越小放在越前面
 @Interceptor(priority = 1, name = "重新分组进行拦截")
 public class BaseInterceptor implements IInterceptor {
 
     @Override
     public void process(Postcard postcard, InterceptorCallback callback) {
+        Log.e("TAG", "BaseInterceptor process-----------------:");
         if (postcard.getExtra() == ConstantMap.LOGIN_EXTRA) {
             boolean isLogin = postcard.getExtras().getBoolean(ConstantMap.IS_LOGIN);
             if (!isLogin) {

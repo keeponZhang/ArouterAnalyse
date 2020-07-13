@@ -159,6 +159,7 @@ public class LogisticsCenter {
                     }
 
                     IRouteGroup iGroupInstance = groupMeta.getConstructor().newInstance();
+                    //往里面加路径
                     iGroupInstance.loadInto(Warehouse.routes);
                     Warehouse.groupsIndex.remove(postcard.getGroup());
 

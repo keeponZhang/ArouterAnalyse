@@ -31,7 +31,7 @@ public class BaseApplication extends Application {
             ARouter.openDebug();
         }
         // 尽可能早，推荐在Application中初始化
-       ARouter.init(mApplication);
+       // ARouter.init(mApplication);
 
 
     }

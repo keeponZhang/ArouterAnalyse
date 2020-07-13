@@ -9,7 +9,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.lizejun.demo.lib.base.RouterMap;
 import com.lizejun.demo.lib.base.util.Utils;
 
-@Route(path = RouterMap.NO_RESULT_ACTIVITY)
+@Route(path = RouterMap.NO_RESULT_ACTIVITY,group = "keepon2")
 public class NoResultActivity extends AppCompatActivity {
 
     @Override
